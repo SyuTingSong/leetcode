@@ -2,11 +2,6 @@ package main
 
 import "fmt"
 
-type ListNode struct {
-	Val  int
-	Next *ListNode
-}
-
 func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 	var result = &ListNode{}
 	carry := 0
@@ -33,12 +28,11 @@ func addTwoNumbers(l1 *ListNode, l2 *ListNode) *ListNode {
 }
 
 func main() {
-	r := addTwoNumbers(
-		&ListNode{1, &ListNode{2, &ListNode{3, nil}}},
-		&ListNode{4, &ListNode{5, &ListNode{6, nil}}},
-	)
+	n1 := FromIntegers([]int{1, 2, 3})
+	n2 := FromIntegers([]int{4, 5, 6})
+	r := addTwoNumbers(n1, n2)
 
-	for n := r; n != nil; n = n.Next {
-		fmt.Println(n.Val)
-	}
+	fmt.Println(n1)
+	fmt.Println(n2)
+	fmt.Println(r)
 }
