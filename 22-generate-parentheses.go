@@ -7,7 +7,7 @@ import (
 
 func generateParenthesis(n int) []string {
 	r := list.New()
-	backtrack(r, "", 0, 0, n)
+	parenthesisTry(r, "", 0, 0, n)
 	var result []string
 	for s := r.Front(); s != nil; s = s.Next() {
 		if str, ok := s.Value.(string); ok {
@@ -17,17 +17,17 @@ func generateParenthesis(n int) []string {
 	return result
 }
 
-func backtrack(r *list.List, p string, open int, close int, max int) {
+func parenthesisTry(r *list.List, p string, open int, close int, max int) {
 	if len(p) == max*2 {
 		r.PushBack(p)
 		return
 	}
 
 	if open < max {
-		backtrack(r, p+"(", open+1, close, max)
+		parenthesisTry(r, p+"(", open+1, close, max)
 	}
 	if close < open {
-		backtrack(r, p+")", open, close+1, max)
+		parenthesisTry(r, p+")", open, close+1, max)
 	}
 }
 
